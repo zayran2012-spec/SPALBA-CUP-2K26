@@ -99,26 +99,34 @@
     <canvas id="toxicCanvas"></canvas>
 
     <!-- Top Bar Notice -->
-    <div class="relative z-50 bg-gradient-to-r from-emerald-950 via-[#061e0e] to-black text-white text-xs py-2 px-4 border-b border-toxic-500/30">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center space-x-2">
-                <span class="bg-toxic-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider animate-pulse">
-                    <i class="fa-solid fa-vial mr-1"></i>Official Portal
-                </span>
-                <span class="text-slate-300">Pendaftaran & Kompetisi SPALBA CUP 2026 - SMP Al-Hikmah IIBS Batu</span>
-            </div>
-            <div class="flex items-center gap-4">
-                <button onclick="toggleAdminMode()" id="adminToggleBtn" class="bg-toxic-500/10 hover:bg-toxic-500/20 text-toxic-400 border border-toxic-500/30 px-3 py-1 rounded-lg transition text-[11px] font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-user-shield text-brand-gold"></i> Mode Panitia: <span id="adminStatusText" class="font-extrabold text-red-400">NONAKTIF</span>
-                </button>
-            </div>
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7">
+        <
+        <!-- HERO HEADER SECTION (LOGO LEBIH BESAR) -->
+<div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
+    <!-- Logo (Ukuran diperbesar dari w-24 h-28 menjadi w-36 h-44) -->
+    <div class="w-36 h-44 sm:w-40 sm:h-48 relative animate-slime flex-shrink-0">
+        <img src="spalba-logo.png" alt="Logo SPALBA CUP 2026" class="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(57,255,20,0.85)]" />
     </div>
 
-    <!-- Main Navigation Bar -->
-    <nav class="sticky top-0 z-40 bg-[#041208]/90 backdrop-blur-md border-b border-toxic-500/30 shadow-lg shadow-toxic-500/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+<!-- Teks & Badge Announcement -->
+    <div class="flex flex-col items-center sm:items-start text-center sm:text-left pt-2">
+        <!-- Badge Pendaftaran -->
+        <div class="inline-flex items-center space-x-2 bg-toxic-500/10 px-4 py-1.5 rounded-full border border-toxic-500/40 text-xs font-bold backdrop-blur-md text-toxic-400 whitespace-nowrap">
+            <span class="flex h-2 w-2 rounded-full bg-toxic-500 animate-ping"></span>
+            <i class="fa-solid fa-flask text-toxic-400"></i>
+            <span>Pendaftaran Resmi Dibuka</span>
+        </div>
+
+        <!-- Nama Sekolah (Lurus Memanjang) -->
+        <p class="text-xs sm:text-sm text-brand-gold font-bold tracking-widest uppercase mt-3 whitespace-nowrap">
+            SMP Al-Hikmah IIBS Batu
+        </p>
+    </div>
+</div>
+        <!-- Teks Judul Utama (Prove Your Dominance, Clashing for Victory...) Tetap Di Bawahnya -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-black uppercase tracking-tight leading-none text-white">
+        ...
                 
                 <!-- Logo & Brand Title -->
                 <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchTab('home')">
@@ -183,10 +191,9 @@
                         </div>
 
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-black uppercase tracking-tight leading-none text-white">
-                            Chasing Victory,<br>
+                            Prove Your Dominance<br>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-toxic-400 via-lime-300 to-emerald-400 toxic-glow-text">
-                                Embracing Solidarity
-                            </span>
+Clashing for Victory                            </span>
                         </h1>
 
                         <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
@@ -397,35 +404,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        let currentTab = 'home';
-        let isAdminMode = false;
-        let registeredTeams = [
-            { 
-                id: 1, 
-                sekolah: 'SMPN 1 Batu', 
-                namaTim: 'Garuda Toxic Team', 
-                kategori: 'Sepak Bola SMP', 
-                wa: '081234567890', 
-                pemain: ['Andi (Kapten)', 'Budi', 'Cahyo', 'Dedi', 'Eko'],
-                suratFile: 'surat_smpn1batu.pdf',
-                buktiFile: 'bukti_transfer_bankjatim.jpg',
-                status: 'Lunas', 
-                fee: 'Rp 200.000' 
-            },
-            { 
-                id: 2, 
-                sekolah: 'SDN 1 Batu', 
-                namaTim: 'Bintang Venom', 
-                kategori: 'Sepak Bola SD', 
-                wa: '085712345678', 
-                pemain: ['Fajar', 'Gilang', 'Hafiz', 'Irfan'],
-                suratFile: 'surat_sdn1batu.jpg',
-                buktiFile: 'bukti_bayar_sd.jpg',
-                status: 'Menunggu', 
-                fee: 'Rp 150.000' 
-            }
-        ];
-
+        
         let currentFormData = {};
 
         function switchTab(tabId) {
@@ -451,25 +430,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function toggleAdminMode() {
-            isAdminMode = !isAdminMode;
-            const statusText = document.getElementById('adminStatusText');
-            const adminPanel = document.getElementById('admin-panel');
-
-            if (isAdminMode) {
-                statusText.innerText = 'AKTIF';
-                statusText.className = 'font-bold text-toxic-400';
-                adminPanel.classList.remove('hidden');
-                renderAdminTable();
-                showToast('Mode Panitia Diaktifkan');
-            } else {
-                statusText.innerText = 'NONAKTIF';
-                statusText.className = 'font-bold text-red-400';
-                adminPanel.classList.add('hidden');
-                showToast('Mode Panitia Dinonaktifkan');
-            }
-        }
-
+        
         function quickDaftar(kategoriName) {
             switchTab('daftar');
             const selectEl = document.getElementById('reg-kategori');
@@ -633,7 +594,6 @@
 
             saveToGoogleSheet(currentFormData);
 
-            renderAdminTable();
             closePaymentModal();
 
             showToast('Pendaftaran tersimpan! Mengalihkan ke WhatsApp Panitia...');
@@ -658,55 +618,7 @@
         }
 
 
-        function renderAdminTable() {
-            const tbody = document.getElementById('admin-table-body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-
-            registeredTeams.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-toxic-500/10 border-b border-toxic-500/20";
-                
-                const playerListFormatted = item.pemain ? item.pemain.join(', ') : '-';
-
-                tr.innerHTML = `
-                    <td class="p-3"><span class="bg-toxic-500/20 text-toxic-400 border border-toxic-500/30 px-2 py-0.5 rounded text-[10px] font-bold">${item.kategori}</span></td>
-                    <td class="p-3">
-                        <p class="font-bold text-white">${item.sekolah}</p>
-                        <p class="text-[11px] text-brand-gold font-semibold">${item.namaTim}</p>
-                    </td>
-                    <td class="p-3 text-slate-300 font-mono text-[11px]">${item.wa}</td>
-                    <td class="p-3 text-slate-300 text-[11px] max-w-xs truncate" title="${playerListFormatted}">
-                        <span class="font-bold text-white">${item.pemain ? item.pemain.length : 0} Orang:</span> ${playerListFormatted}
-                    </td>
-                    <td class="p-3 text-[11px]">
-                        <div class="text-slate-300"><i class="fa-solid fa-file text-toxic-400 mr-1"></i>${item.suratFile || 'Surat.pdf'}</div>
-                        <div class="text-toxic-400"><i class="fa-solid fa-receipt text-brand-gold mr-1"></i>${item.buktiFile || 'Bukti.jpg'}</div>
-                    </td>
-                    <td class="p-3">
-                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${item.status === 'Lunas' ? 'bg-toxic-500/20 text-toxic-400 border border-toxic-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}">
-                            ${item.status}
-                        </span>
-                    </td>
-                    <td class="p-3 text-right">
-                        ${item.status === 'Menunggu' ? 
-                            `<button onclick="verifyPayment(${item.id})" class="bg-toxic-500 hover:bg-toxic-400 text-slate-950 px-2.5 py-1 rounded text-[11px] font-bold transition">Verifikasi</button>` : 
-                            `<span class="text-slate-500 text-[11px]"><i class="fa-solid fa-check-double text-toxic-400"></i> Terverifikasi</span>`}
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function verifyPayment(id) {
-            const team = registeredTeams.find(t => t.id === id);
-            if (team) {
-                team.status = 'Lunas';
-                renderAdminTable();
-                showToast(`Pembayaran tim ${team.namaTim} (${team.sekolah}) berhasil diverifikasi!`);
-            }
-        }
-
+        
         function toggleAccordion(id) {
             const content = document.getElementById(id);
             if (content) content.classList.toggle('hidden');
@@ -808,7 +720,6 @@
         window.onload = function() {
             startCountdown();
             calculateFee();
-            renderAdminTable();
             initToxicCanvas();
         };
     </script>

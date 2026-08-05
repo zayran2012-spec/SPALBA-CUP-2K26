@@ -170,7 +170,7 @@
                         <!-- Hero Header Crest Display (Big Logo) -->
                         <div class="flex flex-col lg:flex-row items-center gap-6 mb-2">
                             <div class="w-28 h-32 relative animate-slime">
-                                <img src="/spalba-logo.png" alt="Logo SPALBA CUP 2026" class="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(57,255,20,0.8)]" />
+                                <img src="<!-- Uploading "image-removebg-preview (44) (1).png"... -->" alt="Logo SPALBA CUP 2026" class="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(57,255,20,0.8)]" />
                             </div>
 
                             <!-- Title Announcement without Gelombang -->
@@ -394,97 +394,7 @@
         </div>
     </div>
 
-    <!-- ADMIN DASHBOARD PANEL (Toggled when Admin Mode active) -->
-    <div id="admin-panel" class="hidden max-w-7xl mx-auto px-4 py-8 relative z-10">
-        <div class="bg-[#020a04] text-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-toxic-500/50">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-toxic-500/30 pb-4">
-                <div>
-                    <h2 class="text-2xl font-display font-black text-toxic-400 flex items-center gap-2 toxic-glow-text">
-                        <i class="fa-solid fa-user-shield"></i> Dashboard Panitia SPALBA CUP 2026
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-1">Daftar Pendaftar Real-time, Berkas & Verifikasi Pembayaran</p>
-                </div>
-                <span class="bg-red-500/20 text-red-400 border border-red-500/30 text-xs px-3 py-1 rounded-full font-mono font-bold">Admin Mode Active</span>
-            </div>
-
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs">
-                    <thead class="bg-black text-toxic-400 uppercase font-display font-bold">
-                        <tr>
-                            <th class="p-3">Cabang Lomba</th>
-                            <th class="p-3">Nama Sekolah & Tim</th>
-                            <th class="p-3">No. WhatsApp</th>
-                            <th class="p-3">Pemain (Skuad)</th>
-                            <th class="p-3">Berkas & Bukti Transfer</th>
-                            <th class="p-3">Status Bayar</th>
-                            <th class="p-3 text-right">Aksi Panitia</th>
-                        </tr>
-                    </thead>
-                    <tbody id="admin-table-body" class="divide-y divide-toxic-500/20 font-medium">
-                        <!-- Dynamic items loaded via JS -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL PEMBAYARAN & KONFIRMASI -->
-    <div id="paymentModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="toxic-glass rounded-2xl max-w-md w-full p-6 shadow-2xl border border-toxic-500/50">
-            <div class="text-center mb-4">
-                <span class="w-12 h-12 bg-toxic-500/20 text-toxic-400 border border-toxic-500/40 rounded-full inline-flex items-center justify-center text-xl font-bold mb-2">
-                    <i class="fa-solid fa-circle-check"></i>
-                </span>
-                <h3 class="text-xl font-display font-extrabold text-white">Rincian Konfirmasi Pendaftaran</h3>
-                <p class="text-xs text-slate-400 mt-1">Langkah akhir konfirmasi tim SPALBA CUP 2026</p>
-            </div>
-
-            <!-- Payment Bank Account Detail Card -->
-            <div class="bg-black/80 text-white rounded-xl p-4 mb-4 border border-toxic-500/30 space-y-2">
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-slate-400">Bank Tujuan Transfer:</span>
-                    <span class="bg-brand-gold text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px]">BANK JATIM</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-xl font-display font-black text-toxic-400 toxic-glow-text">0403327891</span>
-                    <button type="button" onclick="copyRekening()" class="text-xs text-toxic-300 hover:text-white bg-toxic-500/20 px-2.5 py-1 rounded">
-                        <i class="fa-solid fa-copy"></i> Salin
-                    </button>
-                </div>
-                <p class="text-[11px] text-slate-400">a.n. SPALBA CUP / SMP AL-HIKMAH IIBS</p>
-            </div>
-
-            <div class="space-y-2 text-xs text-slate-300 mb-6 bg-black/40 p-3.5 rounded-xl border border-toxic-500/20">
-                <div class="flex justify-between"><span class="text-slate-400">Sekolah:</span> <span id="modal-sekolah" class="font-bold text-white">-</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Nama Tim:</span> <span id="modal-team-name" class="font-bold text-toxic-400">-</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Cabang Lomba:</span> <span id="modal-kategori" class="font-bold text-white">-</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">No. Telepon:</span> <span id="modal-phone" class="font-bold text-white">-</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Jumlah Pemain:</span> <span id="modal-players-count" class="font-bold text-white">0 Pemain</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Surat Keterangan:</span> <span id="modal-surat-status" class="font-bold text-toxic-400">Terunggah</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Bukti Transfer:</span> <span id="modal-bukti-status" class="font-bold text-toxic-400">Terunggah</span></div>
-                <div class="pt-2 border-t border-toxic-500/20 flex justify-between items-center">
-                    <span class="font-bold text-slate-300">Total Biaya:</span>
-                    <span id="modal-pay-amount" class="text-base font-display font-black text-brand-gold gold-glow-text">Rp 200.000</span>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <button onclick="confirmAndSendWA()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Kirim Data & Bukti ke WhatsApp Panitia</span>
-                </button>
-                <button onclick="closePaymentModal()" class="w-full py-2 text-xs text-slate-400 hover:text-white font-bold transition">
-                    Kembali & Edit Data
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST NOTIFICATION CONTAINER -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-black/90 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-toxic-500 text-xs font-bold flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-toxic-400 text-base"></i>
-        <span id="toast-message">Notifikasi</span>
-    </div>
+   
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
